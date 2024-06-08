@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .stick-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh; /* Full height of viewport */
+        }
+
+        .decorated-stick {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50px; /* Thicker stick */
+            background-color: rgba(255, 0, 0, 0.5);
+            transition: left 0.3s ease;
+            z-index: 999; /* Ensure stick is above images */
+        }
+
+        .images-container {
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            position: relative; /* Ensure images are positioned relative to their container */
+        }
+
+        .images-container img {
+            width: 200px;
+            height: auto;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            transition: border-color 0.3s ease, filter 0.3s ease;
+            position: relative; /* Ensure images are positioned relative to their container */
+        }
+
+        .images-container img:hover {
+            border-color: #333;
+        }
+
+        .decorated-button-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .decorated-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 15px 30px; /* Larger button */
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 18px; /* Larger font size */
+        }
+
+        .decorated-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Crowdfunding Platform</h1>
+    </header>
+
+    <div class="stick-container">
+        <div class="decorated-stick"></div>
+    </div>
+
+    <main>
+        <section>
+            <h2>Welcome to Our Crowdfunding Platform!</h2>
+            <p>Explore campaigns, create your own, and support the causes you care about.</p>
+            <div class="images-container">
+                <img src="./images/crowdfunding.jpeg" alt="Crowdfunding Image">
+                <img src="./images/logo-donation.jpeg" alt="Donation Logo">
+                <img src="./images/funding-image.jpeg" alt="Funding Image">
+                <img src="./images/money-donars.jpeg" alt="Money Donars Image">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Crowdfunding Platform</p>
+    </footer>
+
+    <div class="decorated-button-container">
+        <button class="decorated-button" onclick="window.location.href='campaigns.html'"></button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stick = document.querySelector('.decorated-stick');
+            const imagesContainer = document.querySelector('.images-container');
+            const images = document.querySelectorAll('.images-container img');
+
+            document.addEventListener('mousemove', function(e) {
+                const mouseX = e.clientX;
+                const stickWidth = stick.offsetWidth;
+                const containerWidth = imagesContainer.offsetWidth;
+                const maxLeft = containerWidth - stickWidth;
+
+                let stickLeft = mouseX - stickWidth / 2;
+                stickLeft = Math.max(0, Math.min(stickLeft, maxLeft));
+
+                stick.style.left = `${stickLeft}px`;
+
+                images.forEach(image => {
+                    const imageRect = image.getBoundingClientRect();
+                    if (imageRect.left <= stickLeft + stickWidth && imageRect.right >= stickLeft) {
+                        image.style.filter = 'none';
+                    } else {
+                        image.style.filter = 'blur(8px)';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

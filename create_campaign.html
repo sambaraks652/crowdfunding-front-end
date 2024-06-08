@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Campaign</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Create Campaign</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="campaigns.html">Campaigns</a></li>
+                <li><a href="create_campaign.html">Create Campaign</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <form id="create-campaign-form">
+                <input type="text" name="title" placeholder="Title" required>
+                <br>
+                <br>
+                <textarea name="description" placeholder="Description" required></textarea>
+                <br>
+                <br>
+                <input type="number" name="goal" placeholder="Goal amount" required>
+                <br>
+                <br>
+                <button type="submit">Create Campaign</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Crowdfunding Platform</p>
+    </footer>
+
+    <script src="create_campaign.js"></script>
+</body>
+</html>

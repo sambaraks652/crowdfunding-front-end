@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Donate to a Campaign</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="campaigns.html">Campaigns</a></li>
+                <li><a href="create_campaign.html">Create Campaign</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="donate.html">Donate</a></li> <!-- Added link to Donate page -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <form id="donate-form">
+                <input type="text" name="campaignId" placeholder="Campaign ID" required>
+                <br>
+                <input type="number" name="amount" placeholder="Donation Amount" required>
+                <br>
+                <button type="submit">Donate</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Crowdfunding Platform</p>
+    </footer>
+
+    <script src="donate.js"></script>
+</body>
+</html>
